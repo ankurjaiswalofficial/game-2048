@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: 0, 0%, 100%;
+    --foreground: 240, 10%, 3.9%;
+    --card: 0, 0%, 100%;
+    --card-foreground: 240, 10%, 3.9%;
+    --popover: 0, 0%, 100%;
+    --popover-foreground: 240, 10%, 3.9%;
+    --primary: 240, 5.9%, 10%;
+    --primary-foreground: 0, 0%, 98%;
+    --secondary: 240, 4.8%, 95.9%;
+    --secondary-foreground: 240, 5.9%, 10%;
+    --muted: 240, 4.8%, 95.9%;
+    --muted-foreground: 240, 3.8%, 46.1%;
+    --accent: 240, 4.8%, 95.9%;
+    --accent-foreground: 240, 5.9%, 10%;
+    --destructive: 0, 84.2%, 60.2%;
+    --destructive-foreground: 0, 0%, 98%;
+    --border: 240, 5.9%, 90%;
+    --input: 240, 5.9%, 90%;
+    --ring: 240, 5.9%, 10%;
+    --radius: 0.5rem;
+    --chart-1: 12, 76%, 61%;
+    --chart-2: 173, 58%, 39%;
+    --chart-3: 197, 37%, 24%;
+    --chart-4: 43, 74%, 66%;
+    --chart-5: 27, 87%, 67%;
+  }
+
+  .dark {
+    --background: 240, 10%, 3.9%;
+    --foreground: 0, 0%, 98%;
+    --card: 240, 10%, 3.9%;
+    --card-foreground: 0, 0%, 98%;
+    --popover: 240, 10%, 3.9%;
+    --popover-foreground: 0, 0%, 98%;
+    --primary: 0, 0%, 98%;
+    --primary-foreground: 240, 5.9%, 10%;
+    --secondary: 240, 3.7%, 15.9%;
+    --secondary-foreground: 0, 0%, 98%;
+    --muted: 240, 3.7%, 15.9%;
+    --muted-foreground: 240, 5%, 64.9%;
+    --accent: 240, 3.7%, 15.9%;
+    --accent-foreground: 0, 0%, 98%;
+    --destructive: 0, 62.8%, 30.6%;
+    --destructive-foreground: 0, 0%, 98%;
+    --border: 240, 3.7%, 15.9%;
+    --input: 240, 3.7%, 15.9%;
+    --ring: 240, 4.9%, 83.9%;
+    --chart-1: 220, 70%, 50%;
+    --chart-2: 160, 60%, 45%;
+    --chart-3: 30, 80%, 55%;
+    --chart-4: 280, 65%, 60%;
+    --chart-5: 340, 75%, 55%;
+  }
+}
+
+
+* {
+    @apply box-border font-sans;
+}
+
+html {
+    @apply text-base;
+}
+
+html,
+body {
+    @apply m-0 bg-[hsl(var(--background))] text-[hsl(var(--foreground))];
+}
+
+body {
+    @apply transition-colors ease-in-out duration-300;
+}
+
+h1 {
+    @apply text-4xl m-0;
+}
+
+button {
+    @apply bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] font-bold border-none cursor-pointer px-4 py-2 text-base rounded-lg transition-all ease-in-out;
+}
+
+button:disabled {
+    @apply opacity-50 cursor-not-allowed;
+}
+
+button:not(:disabled):hover {
+    @apply opacity-80;
+}
+
+.page {
+    @apply max-w-xl mx-auto px-5 text-lg;
+}
+
+.header {
+    @apply py-8 text-base;
+}
+
+.header-row {
+    @apply flex items-center justify-between flex-col md:flex-row gap-2 my-2;
+}
+
+.header-row button {
+    @apply ml-1.25;
+}
+
+.header-buttons {
+    @apply min-w-max;
+}
+
+.header-scores {
+    @apply flex;
+}
+
+.header-scores-score {
+    @apply relative bg-[hsl(var(--card))] text-[hsl(var(--card-foreground))] px-6 py-0.25 rounded-lg font-bold text-center ml-1.25;
+}
+
+.header-scores-score div:first-child {
+    @apply text-[hsl(var(--secondary-foreground))] uppercase text-sm mt-1.25;
+}
+
+.header-scores-score div:nth-child(2) {
+    @apply text-[hsl(var(--secondary-foreground))] -mt-1.25 text-2xl;
+}
+
+.header-scores-score-increase {
+    animation: score-increase 0.5s ease-in-out;
+    @apply absolute bottom-0 left-0 right-0 text-center text-2xl opacity-0;
+}
+
+.info {
+    @apply leading-relaxed text-[hsl(var(--primary))] font-medium;
+}
+
+.info a {
+    @apply text-[hsl(var(--primary))] font-bold;
+}
+
+.size-picker {
+    @apply flex -mx-1.25 gap-1.5;
+}
+
+.size-picker button {
+    @apply flex-1 mx-1.25;
+}
+
+.board {
+    @apply relative bg-[hsl(var(--card))] rounded-lg grid gap-[var(--grid-gap)] p-[var(--grid-gap)] select-none touch-none;
+    grid-template-columns: repeat(var(--board-size), 1fr);
+}
+
+.board-tile {
+    @apply relative rounded-md pb-[100%] bg-[hsl(var(--muted))] leading-none text-lg;
+}
+
+.board-tile-value {
+    @apply bg-[hsl(var(--foreground))] text-[hsl(var(--background))] absolute inset-0 font-bold flex justify-center items-center leading-none rounded-md z-10;
+}
+
+.board-tile-new {
+    animation: tile-new 0.2s ease-in-out;
+}
+
+.board-tile-merge {
+    animation: tile-merge 0.3s ease-in-out;
+}
+
+.overlay {
+    animation: reveal 0.3s ease-in-out;
+    @apply absolute inset-0 z-[999] flex flex-col justify-center items-center bg-[hsla(var(--popover),0.73)];
+}
+
+.overlay-defeat {
+    @apply bg-[hsla(var(--secondary),0.9)];
+}
+
+.overlay-victory {
+    @apply bg-[hsla(var(--primary),0.5)] text-[hsl(var(--primary-foreground))];
+}
+
+.overlay-buttons button {
+    @apply mx-1.25;
+}
+
+.overlay h1 {
+    @apply mb-2;
+}
+
+@keyframes reveal {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes tile-new {
+    0% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes tile-merge {
+    0% {
+        transform: scale(0.7);
+    }
+    80% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes score-increase {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-4rem);
+    }
+}
+
+@media screen and (min-width: 610px) {
+    .board-tile {
+        @apply text-2xl;
+    }
+    .board.board-5 .board-tile,
+    .board.board-6 .board-tile {
+        @apply text-xl;
+    }
+}
