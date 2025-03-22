@@ -1,6 +1,9 @@
 # Game 2048
-![1742677529124](image/README/1742677529124.png)
-This repository contains a reimplementation of the popular [2048 game](https://play2048.co/), built using modern web technologies.
+- ![1742678524079](public/logo.png)
+- This repository contains a reimplementation of the popular [2048 game](https://play2048.co/), built using modern web technologies.
+
+## Workflow
+- ![1742678500398](image/README/1742678500398.png)
 
 ## Features
 
@@ -47,10 +50,10 @@ This repository contains a reimplementation of the popular [2048 game](https://p
    ```
 ## Look -> (Themed)
 - Dark
-![1742677529124](image/README/1742677529124.png)
+- ![1742677529124](image/README/1742677529124.png)
 
 - Light
-![1742677578762](image/README/1742677578762.png)
+- ![1742677578762](image/README/1742677578762.png)
 ## Troubleshooting
 
 - **Game Issues**: Ensure all dependencies are installed and the development server is running.
