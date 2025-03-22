@@ -1,1 +1,10 @@
+flowchart TD
+    Start[Start Game] --> Initialize[Initialize Game Board]
+    Initialize --> Input[Handle User Input]
+    Input --> Update[Update Game State]
+    Update --> Render[Render Game Board]
+    Render --> Check[Check Game Status]
+    Check -->|Win| End[End Game]
+    Check -->|Lose| End
+    Check -->|Continue| Input
 
