@@ -4,7 +4,11 @@ import { StorageModel } from '@/types/Models';
 const ITEM_NAME = '2048_data';
 
 function isClientSide(): boolean {
-	return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+	try {
+		return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+	} catch {
+		return false;
+	}
 }
 
 export function getStoredData(): StorageModel {
