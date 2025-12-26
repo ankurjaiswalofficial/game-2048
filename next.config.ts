@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  basePath: process.env.STATIC_URL_PATH || "",
+  /* config options here */
 };
 
 export default nextConfig;
